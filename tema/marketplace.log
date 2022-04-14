@@ -1,0 +1,18 @@
+17:36:17,196 root INFO register_producer new generated id:0
+17:36:17,197 root INFO producer_id: 0; product: Coffee(name='cafea', price=12, acidity='5.09', roast_level='MEDIUM')
+17:36:17,197 root INFO successfully published by 0
+17:36:17,197 root INFO new_cart new generated id:0
+17:36:17,197 root INFO add_to_cart cart_id: 0; product: Coffee(name='cafea', price=12, acidity='5.09', roast_level='MEDIUM')
+17:36:17,197 root INFO successfully added in cart with id:0
+17:36:17,212 root INFO new_cart new generated id:0
+17:36:17,213 root INFO register_producer new generated id:0
+17:36:17,214 root INFO producer_id: 0; product: Coffee(name='cafea', price=12, acidity='5.09', roast_level='MEDIUM')
+17:36:17,214 root INFO successfully published by 0
+17:36:17,216 root INFO register_producer new generated id:0
+17:36:17,217 root INFO register_producer new generated id:0
+17:36:17,219 root INFO producer_id: 0; product: Coffee(name='cafea', price=12, acidity='5.09', roast_level='MEDIUM')
+17:36:17,219 root INFO successfully published by 0
+17:36:17,219 root INFO new_cart new generated id:0
+17:36:17,219 root INFO add_to_cart cart_id: 0; product: Coffee(name='cafea', price=12, acidity='5.09', roast_level='MEDIUM')
+17:36:17,219 root INFO successfully added in cart with id:0
+17:36:17,219 root INFO remove_from_cart cart_id: 0; product: Coffee(name='cafea', price=12, acidity='5.09', roast_level='MEDIUM')

@@ -1,0 +1,32 @@
+Pentru implementarea soluției a fost necesar să mă folosesc de mutexuri pentru ca thread-urile să nu suprascrie
+apelurile altor thread-uri. M-am folosit de modelul Multiple Product-Multiple Consumer, însă implementarea sa cu
+semafoare nu este posibilă datorită numărului necunoscut de producători ce pot genera noi produse.
+
+De exemplu, pentru publish, ca alternativă la semafoare, am folosit un mutex în acest mod:
+        self.sem_prod.acquire()
+        producer_queue = self.producer_queues.get(producer_id)
+        is_not_full = False
+        if len(producer_queue) < self.queue_size_per_producer:
+            is_not_full = True
+            self.producer_queues.get(producer_id).append(product)
+            self.logger.info('successfully published by ' + str(producer_id))
+        self.sem_prod.release()
+
+În acest mod pot verifica mai întâi pentru producător dacă stiva sa este plină, în caz contrar inserez în stivă.
+Prin urmare un consumator care șterge un produs din cartul său nu va ajunge să suprascrie apelul de la producător.
+
+Producătorul va produce până când toți consumatorii vor face toate operațiile de adăugare și ștergere din carturi
+necesare. După ce produce un produs va aștepta până când poate produce din nou, altfel, în cazul în care stiva sa este
+plină, va aștepta mai mult.
+
+Tema o consider utilă, prin faptul că am învățat să lucrez pe mai multe thread-uri în Python, respectiv să învăț
+bazele unittesting-ului.
+
+Consider că implementarea este destul de naivă, prin faptul că folosesc mai multe stive individuale.
+
+La implementare consider că anumite cerințe au fost omise, de exemplu la place_order nu se specifică afișarea
+în stdout. De asemenea, la remove_from_cart nu pare să se verifice dacă s-a pus mutex, și implicit posibilitatea
+ca să se suprascrie apelurile. Ca dificultăți am întâmpinat probleme la sincronizare, respectiv probleme de logică.
+
+Printre resurse m-am folosit de laboratorul 2, respectiv de documentația Python pentru logging, unittesting, și
+pentru multithreading.
